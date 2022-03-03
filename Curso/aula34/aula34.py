@@ -3,6 +3,7 @@ While em Python - Aula 7
 Utilizado para realizar ações enquanto uma condição for verdadeira.
 
 Precisa-se entender as condições e os operadores.
+Em while se precisa ter sempre uma variável de controle sobre o loop while.
 """
 
 """

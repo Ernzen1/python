@@ -107,19 +107,20 @@ green&white;,;09/15/17,   Gail Phelps   ;,;$30.52
 
 #------------------------------------------------
 # Start coding below!
+
 daily_sales_replaced = daily_sales.replace(";,;", "_")
 daily_transactions = daily_sales_replaced.split(",")
 daily_transactions_split = []
+
 for element in daily_transactions:
   daily_transactions_split.append(element.split("_"))
 
 transactions_clean = []
-
 for element in daily_transactions_split:
-    transaction_clean =[]
-    for elements in element:
-        transaction_clean.append(elements.replace("\n", " ").strip(" "))
-    transactions_clean.append(transaction_clean)
+  transaction_clean =[]
+  for elements in element:
+    transaction_clean.append(elements.replace("\n", " ").strip(" "))
+  transactions_clean.append(transaction_clean)
 
 customers = []
 sales = []
@@ -132,6 +133,28 @@ for dta_vlue in transactions_clean:
 
 total_sales = 0
 for money in sales:
-    real = float(money.strip("$"))
-    total_sales += real
+  real = float(money.strip("$"))
+  total_sales += real
+
+thread_sold_split =[]
+
+for threads in thread_sold:
+  if not "&" in threads:
+    thread_sold_split.append(threads)
+  else:
+    splited = threads.split("&")
+    thread_sold_split.append(splited[0])
+    thread_sold_split.append(splited[1])
+
+def color_count(color):
+  count = 0
+  for color_data in thread_sold_split:
+    if color == color_data:
+      count += 1
+  return count
+
+colors = ['red','yellow','green','white','black','blue','purple']
+for color in colors:
+  print(f"The thread color {color} was sold {color_count(color)} times today")
+
 
